@@ -17,6 +17,18 @@ endif
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'tomasiser/vim-code-dark'
+
+call vundle#end()
+filetype plugin indent on
+
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -115,9 +127,6 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 
-" Language-specific indentation rules
-filetype indent on
-
 " color current cursor line
 set cursorline
 
@@ -140,3 +149,5 @@ set wildmenu
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
+" Specific changes for Slim plugin
+autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
