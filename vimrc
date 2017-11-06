@@ -107,3 +107,36 @@ if has('langmap') && exists('+langnoremap')
   set langnoremap
 endif
 
+" colorscheme uses: https://github.com/tomasiser/vim-code-dark
+colorscheme codedark
+
+" Define tabs and spaces for normal mode
+set tabstop=4
+set softtabstop=4
+set expandtab
+
+" Language-specific indentation rules
+filetype indent on
+
+" color current cursor line
+set cursorline
+
+" show line numbers
+set number
+
+" show matching characters, like parenthesis
+set showmatch
+
+" search while typing
+set incsearch
+
+" file searching
+set path+=**
+
+" show small context view when searching
+set wildmenu
+
+" Edit and Load vimrc quickly
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
