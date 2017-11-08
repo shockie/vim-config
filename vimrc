@@ -25,6 +25,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'tomasiser/vim-code-dark'
+Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 filetype plugin indent on
@@ -121,6 +123,7 @@ endif
 
 " colorscheme uses: https://github.com/tomasiser/vim-code-dark
 colorscheme codedark
+let g:airline_theme = 'codedark'
 
 " Define tabs and spaces for normal mode
 set tabstop=4
