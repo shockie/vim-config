@@ -27,6 +27,7 @@ Plugin 'slim-template/vim-slim.git'
 Plugin 'tomasiser/vim-code-dark'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-syntastic/syntastic'
 
 call vundle#end()
 filetype plugin indent on
@@ -154,3 +155,31 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Specific changes for Slim plugin
 autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
+
+" Remove delay between normal and insert mode
+set ttimeoutlen=50
+
+" Write as sudo
+cmap w!! w !sudo tee > /dev/null %
+
+set clipboard=unnamed
+
+" remove trailing spaces on specific filetypes
+autocmd FileType rake,slim,coffee,rb,sass,yml autocmd BufWritePre <buffer> %s/\s\+$//e
+
+" configure syntatic with the defaults for now
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
+" relative linenumbers but only in insert mode
+set relativenumber
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
